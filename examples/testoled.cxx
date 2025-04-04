@@ -40,7 +40,9 @@ main()
     try
     {
         SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
-        drawString8x16(SSD1306::OledPoint{32, 24},
+
+        // Adjust text position for 128x32 display
+        drawString8x16(SSD1306::OledPoint{32, 8}, // Move text to fit within 32-pixel height
                        "Oled I" "\xFD" "C",
                        SSD1306::PixelStyle::Set,
                        oled);
@@ -53,43 +55,33 @@ main()
 
         //-----------------------------------------------------------------
 
-
         std::random_device randomDevice;
         std::mt19937 randomGenerator{randomDevice()};
         std::uniform_int_distribution<> xDistribution{0, oled.width() - 1};
         std::uniform_int_distribution<> yDistribution{0, oled.height() - 1};
 
-
         //-----------------------------------------------------------------
 
-        while(key.key != 27)
+        while (key.key != 27)
         {
             key = linuxKeys.pressed();
 
             switch (key.key)
             {
             case 'i':
-
                 oled.displayInverse();
-
                 break;
 
             case 'n':
-
                 oled.displayNormal();
-
                 break;
 
             case '+':
-
                 oled.displayOn();
-
                 break;
 
             case '-':
-
                 oled.displayOff();
-
                 break;
             }
 
@@ -110,4 +102,3 @@ main()
 
     return 0;
 }
-

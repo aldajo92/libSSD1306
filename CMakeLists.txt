@@ -43,3 +43,5 @@ target_link_libraries(testbitmap SSD1306)
 add_executable(testoled examples/testoled.cxx examples/LinuxKeys.cxx)
 target_link_libraries(testoled SSD1306)
 
+add_executable(helloworld examples/helloworld.cxx)
+target_link_libraries(helloworld SSD1306)

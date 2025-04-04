@@ -423,9 +423,9 @@ SSD1306::OledI2C::init() const
 
     sendCommand(OLED_SET_COM_OUTPUT_SCAN_DIRECTION_REMAP);
 
-    // Set COM Pins hardware configuration - DAh, 12h
+    // Set COM Pins hardware configuration - DAh, 02h
 
-    sendCommand(OLED_SET_COM_PINS_HARDWARE_CONFIGURATION, 0x12);
+    sendCommand(OLED_SET_COM_PINS_HARDWARE_CONFIGURATION, 0x02); // Adjusted for 32-pixel height
 
     // Set Pre-charge Period D9h, F1h
 
@@ -447,14 +447,18 @@ SSD1306::OledI2C::init() const
 
     sendCommand(OLED_SET_COLUMN_ADDRESS, 0x00, 0x7F);
 
-    // Set Page Address - 22h, 00h, 07h
+    // Set Page Address - 22h, 00h, 03h
 
-    sendCommand(OLED_SET_PAGE_ADDRESS, 0x00, 0x07);
+    sendCommand(OLED_SET_PAGE_ADDRESS, 0x00, 0x03); // Adjusted for 32-pixel height (4 pages)
 
     // Set Contrast Control - 81h, 7Fh
 
     sendCommand(OLED_SET_CONTRAST, 0x7F);
 
+    // Set Multiplex Ratio - A8h, 1Fh
+
+    sendCommand(OLED_SET_MUX_RATIO, 0x1F); // Adjusted for 32-pixel height
+    
     // Display On - AFh
 
     sendCommand(OLED_SET_DISPLAY_ON);

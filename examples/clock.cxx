@@ -90,7 +90,8 @@ showTime(
     auto length = strftime(time, sizeof(time), "%l:%M:%S %P", tm);
     int offset = (128 - (8 * length)) / 2;
 
-    SSD1306::OledPoint location{offset, 18};
+    // Adjust vertical position for the smaller height
+    SSD1306::OledPoint location{offset, 0}; // Move time to the top row
 
     location = drawString8x16(location, time, style, oled);
 
@@ -101,7 +102,8 @@ showTime(
     length = strftime(date, sizeof(date), "%d %b %Y", tm);
     offset = (128 - (8 * length)) / 2;
 
-    location.set(offset, location.y() + 20);
+    // Adjust vertical position for the smaller height
+    location.set(offset, location.y() + 16); // Move date below the time
 
     location = drawString8x8(location, date, style, oled);
 

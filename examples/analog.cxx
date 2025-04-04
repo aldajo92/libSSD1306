@@ -50,10 +50,11 @@ namespace
 {
 volatile static std::sig_atomic_t run = 1;
 
-static constexpr int HourHandLength{18};
-static constexpr int MinuteHandLength{28};
-static constexpr int SecondHandLength{30};
-static constexpr int TickRadius{31};
+// Adjusted for 128x32 display
+static constexpr int HourHandLength{8};   // Shortened for smaller height
+static constexpr int MinuteHandLength{12};
+static constexpr int SecondHandLength{14};
+static constexpr int TickRadius{15};     // Reduced to fit within 32-pixel height
 }
 
 //-------------------------------------------------------------------------
@@ -156,8 +157,12 @@ main()
             }
         }
 
-        SSD1306::OledBitmap<64, 64> bitmap;
-        SSD1306::OledPoint offset{32, 0};
+        // Update bitmap dimensions for 128x32 display
+        SSD1306::OledBitmap<128, 32> bitmap;
+
+        // Adjust offset to center the clock on the 128x32 display
+        SSD1306::OledPoint offset{0, 0}; // No offset needed for full-screen clock
+
         SSD1306::OledI2C oled{"/dev/i2c-1", 0x3C};
 
         while (run)
@@ -180,4 +185,3 @@ main()
 
     return 0;
 }
-

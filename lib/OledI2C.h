@@ -55,7 +55,7 @@ class OledI2C
 public:
 
     static constexpr int Width{128};
-    static constexpr int Height{64};
+    static constexpr int Height{32};
     static constexpr int BytesPerBlock{32};
     static constexpr int BufferSize{BytesPerBlock + 1};
     static constexpr int Blocks{(Width * Height) / (8 * BytesPerBlock)};
