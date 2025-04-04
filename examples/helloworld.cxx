@@ -15,13 +15,11 @@ int main()
         // Clear the display
         oled.clear();
 
-        // Display "Hello, World!" centered on the screen
-        const std::string message = "Hello, World!";
-        int textWidth = message.size() * 8; // Each character is 8 pixels wide
-        int x = (oled.width() - textWidth) / 2; // Center horizontally
-        int y = (oled.height() - 16) / 2; // Center vertically (16 pixels high font)
-
-        drawString8x8(SSD1306::OledPoint{x, y}, message, SSD1306::PixelStyle::Set, oled);
+        // Display four rows of text
+        drawString8x8(SSD1306::OledPoint{0, 0}, "row1", SSD1306::PixelStyle::Set, oled); // Row 1
+        drawString8x8(SSD1306::OledPoint{0, 8}, "row2", SSD1306::PixelStyle::Set, oled); // Row 2
+        drawString8x8(SSD1306::OledPoint{0, 16}, "row3", SSD1306::PixelStyle::Set, oled); // Row 3
+        drawString8x8(SSD1306::OledPoint{0, 24}, "row4", SSD1306::PixelStyle::Set, oled); // Row 4
 
         // Update the display
         oled.displayUpdate();
