@@ -45,7 +45,7 @@
 #include <arpa/inet.h>
 #include <sys/time.h>
 
-#include "OledFont8x16.h"
+#include "OledFont8x8.h"
 #include "OledI2C.h"
 
 //-------------------------------------------------------------------------
@@ -102,21 +102,21 @@ showAddresses(
 
             if (strncmp(ifa->ifa_name, "eth", 3) == 0)
             {
-                address = "E";
+                address = "e";
             }
             else if (strncmp(ifa->ifa_name, "wlan", 4) == 0)
             {
-                address = "W";
+                address = "w";
             }
             else if (strncmp(ifa->ifa_name, "usb", 3) == 0)
             {
-                address = "U";
+                address = "u";
             }
 
             if (not address.empty())
             {
                 address += addressBuffer;
-                drawString8x16(SSD1306::OledPoint{0, row * 16},
+                drawString8x8(SSD1306::OledPoint{0, row * 16},
                                address,
                                SSD1306::PixelStyle::Set,
                                oled);
