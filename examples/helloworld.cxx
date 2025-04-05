@@ -16,10 +16,7 @@ int main()
         oled.clear();
 
         // Display four rows of text
-        drawString8x8(SSD1306::OledPoint{0, 0}, "row1", SSD1306::PixelStyle::Set, oled); // Row 1
-        drawString8x8(SSD1306::OledPoint{0, 8}, "row2", SSD1306::PixelStyle::Set, oled); // Row 2
-        drawString8x8(SSD1306::OledPoint{0, 16}, "row3", SSD1306::PixelStyle::Set, oled); // Row 3
-        drawString8x8(SSD1306::OledPoint{0, 24}, "row4", SSD1306::PixelStyle::Set, oled); // Row 4
+        drawString8x8(SSD1306::OledPoint{0, 0}, "Hello World!", SSD1306::PixelStyle::Set, oled); // Row 1
 
         // Update the display
         oled.displayUpdate();
