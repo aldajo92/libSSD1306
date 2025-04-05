@@ -45,3 +45,6 @@ target_link_libraries(testoled SSD1306)
 
 add_executable(helloworld examples/helloworld.cxx)
 target_link_libraries(helloworld SSD1306)
+
+add_executable(fourrows examples/fourrows.cxx)
+target_link_libraries(fourrows SSD1306)
